@@ -6,6 +6,8 @@
   "type": "commonjs",
   "scripts": {
     "dev": "ts-node-dev --inspect --respawn --transpile-only --ignore-watch node_modules .",
+    "lint": "eslint --ext .ts src/",
+    "lint:fix": "eslint --ext .ts src/ --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

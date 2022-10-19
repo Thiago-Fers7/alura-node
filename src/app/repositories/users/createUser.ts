@@ -1,5 +1,5 @@
-import delay from "../../../utils/delay";
-import { usersMockDB } from "./mock";
+import delay from '../../../utils/delay';
+import { usersMockDB } from './mock';
 
 interface ICreateUserData {
   name: string;
@@ -20,4 +20,4 @@ export default async ({ name, email, password }: ICreateUserData) => {
   usersMockDB.push(user);
 
   return user;
-}
+};

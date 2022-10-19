@@ -1,7 +1,12 @@
-
 import { Request, Response, NextFunction } from 'express';
 
-export default (error: any, req: Request, res: Response, next: NextFunction) => {
+export default (
+  error: unknown,
+  req: Request,
+  res: Response,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  next: NextFunction,
+) => {
   console.log('Error Handler', error);
-  res.sendStatus(500);
+  return res.sendStatus(500);
 };

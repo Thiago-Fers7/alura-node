@@ -1,3 +1,9 @@
-export default async (delayTime: number = 500) => {
-  return await new Promise((r) => setTimeout(r, delayTime))
+async function delay(ms = 500) {
+  await new Promise(resolve => {
+    setTimeout(() => {
+      resolve('some value');
+    }, ms);
+  });
 }
+
+export default delay;
