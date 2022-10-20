@@ -1,5 +1,4 @@
-import delay from '../../../utils/delay';
-import { usersMockDB } from './mock';
+import { User } from '../../../database/users';
 
 interface IUpdateUserData {
   name: string;
@@ -7,11 +6,16 @@ interface IUpdateUserData {
 }
 
 export default async (id: string, { name, email }: IUpdateUserData) => {
-  await delay();
+  const userUpdated = await User.updateOne(
+    { _id: id },
+    { name, email },
+    {},
+    (erro, doc) => {
+      console.log(doc);
+    },
+  );
 
-  const userIndex = usersMockDB.findIndex(user => user.id === id);
+  console.log(userUpdated);
 
-  Object.assign(usersMockDB[userIndex], { name, email });
-
-  return usersMockDB[userIndex];
+  return userUpdated;
 };

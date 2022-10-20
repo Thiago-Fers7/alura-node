@@ -12,7 +12,10 @@ export default async (req: Request, res: Response) => {
     return res.status(404).json({ message: 'User not found' });
   }
 
-  await deleteUser(id);
-
-  return res.sendStatus(204);
+  await deleteUser(id, error => {
+    if (error) {
+      return res.status(500).json({ error });
+    }
+    return res.status(204).send();
+  });
 };

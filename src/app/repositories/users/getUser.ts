@@ -1,10 +1,7 @@
-import delay from '../../../utils/delay';
-import { usersMockDB } from './mock';
+import { User } from '../../../database/users';
 
 export default async (id: string) => {
-  await delay();
-
-  const user = usersMockDB.find(user => user.id === id);
+  const user = User.findById(id);
 
   return user;
 };

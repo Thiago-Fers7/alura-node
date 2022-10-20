@@ -1,10 +1,7 @@
-import delay from '../../../utils/delay';
-import { usersMockDB } from './mock';
+import { CallbackWithoutResult } from 'mongoose';
 
-export default async (id: string) => {
-  await delay();
+import { User } from '../../../database/users';
 
-  const userIndex = usersMockDB.findIndex(user => user.id === id);
-
-  usersMockDB.splice(userIndex, 1);
+export default async (id: string, callback?: CallbackWithoutResult) => {
+  await User.deleteOne({ _id: id }, callback);
 };

@@ -1,23 +1,13 @@
-import delay from '../../../utils/delay';
-import { usersMockDB } from './mock';
+import { IUser, User } from '../../../database/users';
 
-interface ICreateUserData {
-  name: string;
-  email: string;
-  password: string;
-}
-
-export default async ({ name, email, password }: ICreateUserData) => {
-  await delay();
-
-  const user = {
-    id: String(Math.random()),
-    name,
+export default async ({ name, email, password }: IUser) => {
+  const user = new User({
     email,
+    name,
     password,
-  };
+  });
 
-  usersMockDB.push(user);
+  await user.save();
 
   return user;
 };

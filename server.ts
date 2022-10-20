@@ -1,5 +1,6 @@
 import express from 'express';
 import 'express-async-errors';
+import './src/database';
 
 import cors from './src/app/middlewares/cors';
 import errorHandler from './src/app/middlewares/errorHandler';

@@ -16,7 +16,7 @@ export default async (req: Request, res: Response) => {
     return res.status(400).json({ error: 'User already exists' });
   }
 
-  await createUser({ name, email, password });
+  const user = await createUser({ name, email, password });
 
-  return res.sendStatus(201);
+  return res.status(201).json(user);
 };
