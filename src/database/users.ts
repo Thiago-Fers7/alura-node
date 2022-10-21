@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 import { model, Schema } from 'mongoose';
 
 export interface IUser {
@@ -19,7 +20,12 @@ const userSchema = new Schema<IUser>(
   },
 );
 
-userSchema.pre('save', next => {
+// eslint-disable-next-line func-names
+userSchema.pre('save', async function (next) {
+  const passwordModified = await bcrypt.hash(this.password, 10);
+
+  this.password = passwordModified;
+
   next();
 });
 
