@@ -6,16 +6,11 @@ interface IUpdateUserData {
 }
 
 export default async (id: string, { name, email }: IUpdateUserData) => {
-  const userUpdated = await User.updateOne(
+  const userUpdated = await User.findOneAndUpdate(
     { _id: id },
     { name, email },
-    {},
-    (erro, doc) => {
-      console.log(doc);
-    },
+    { returnDocument: 'after' },
   );
-
-  console.log(userUpdated);
 
   return userUpdated;
 };

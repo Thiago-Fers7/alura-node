@@ -28,5 +28,5 @@ export default async (req: Request, res: Response) => {
 
   const userUpdated = await updateUser(id, { name, email });
 
-  return res.status(204).json(userUpdated);
+  return res.status(200).json(userUpdated);
 };
